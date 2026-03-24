@@ -9,10 +9,18 @@ package main
 
 import (
 	"os"
-	"slices"
 
 	"github.com/01-edu/z01"
 )
+
+func contains(a []rune, char rune) bool {
+	for _, c := range a {
+		if c == char {
+			return true
+		}
+	}
+	return false
+}
 
 func main() {
 	args := os.Args[1:]
@@ -28,7 +36,7 @@ func main() {
 
 	for i := range str1 {
 		for j := range str2 {
-			if str1[i] == str2[j] && !slices.Contains(doubles, str1[i]) {
+			if str1[i] == str2[j] && !contains(doubles, str1[i]) {
 				doubles = append(doubles, str1[i])
 			}
 		}
